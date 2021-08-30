@@ -2,11 +2,13 @@ import Vue from "vue";
 import App from "./App.vue";
 import ECharts from "vue-echarts";
 import { use } from "echarts/core";
-import { THEME_KEY } from "vue-echarts";
-// 手动引入 ECharts 各模块来减小打包体积
 
+// 引入mock数据
+require("./mock");
+
+// 手动引入 ECharts 各模块来减小打包体积
 import { CanvasRenderer } from "echarts/renderers";
-import { BarChart, PieChart } from "echarts/charts";
+import { BarChart, PieChart, LineChart, ScatterChart } from "echarts/charts";
 import {
   LegendComponent,
   TitleComponent,
@@ -20,6 +22,8 @@ use([
   CanvasRenderer,
   BarChart,
   PieChart,
+  LineChart,
+  ScatterChart,
   GridComponent,
   TooltipComponent,
 ]);
@@ -30,7 +34,6 @@ Vue.component("v-chart", ECharts);
 Vue.config.productionTip = false;
 
 new Vue({
-  THEME_KEY,
   ECharts,
   render: (h) => h(App),
 }).$mount("#app");

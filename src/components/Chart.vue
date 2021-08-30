@@ -1,68 +1,82 @@
 <template>
   <div>
-    <v-chart class="chart" :option="option"></v-chart>
+    <v-chart class="chart" :option="optimSet"></v-chart>
   </div>
 </template>
 
 <script>
-import { THEME_KEY } from "vue-echarts";
 export default {
   name: "Chart",
-
-  provide: {
-    [THEME_KEY]: "white",
-  },
-  data() {
-    return {
-      option: {
-        title: {
-          text: "Traffic Sources",
-          left: "center",
-        },
-        tooltip: {
-          trigger: "item",
-          formatter: "{a} <br/>{b} : {c} ({d}%)",
-        },
-        legend: {
-          orient: "vertical",
-          left: "left",
+  props: ["setData"],
+  computed: {
+    optimSet() {
+      let rawOption = this.setData;
+      let mapOption = null;
+      if (rawOption) {
+        let myTitle = rawOption.title ? rawOption.title : "测试图";
+        let myLegend = {};
+        rawOption.category
+          .filter((val) => !val.hidden)
+          .forEach((val) => (myLegend[val.name] = val.label));
+        let myXAxis = {
+          type: "category",
           data: [
-            "Direct",
-            "Email",
-            "Ad Networks",
-            "Video Ads",
-            "Search Engines",
+            ...new Set(
+              rawOption.series.filter((val) => !val.hidden).map((val) => val.id)
+            ),
           ],
-        },
-        series: [
-          {
-            name: "Traffic Sources",
-            type: "pie",
-            radius: "55%",
-            center: ["50%", "60%"],
-            data: [
-              { value: 335, name: "Direct" },
-              { value: 310, name: "Email" },
-              { value: 234, name: "Ad Networks" },
-              { value: 135, name: "Video Ads" },
-              { value: 1548, name: "Search Engines" },
-            ],
-            emphasis: {
-              itemStyle: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: "rgba(0, 0, 0, 0.5)",
-              },
+        };
+        let myYAxis = {
+          type: "value",
+        };
+        // let seriesArr = [...new Array(legend.length)];
+        let mySeries = [];
+        Object.keys(myLegend).map((tem) => {
+          let label = myLegend[tem];
+          let data = [];
+          let type = rawOption.series.find((element) => {
+            return element.name == tem;
+          }).type;
+          rawOption.dataset.source.forEach((element) => {
+            let value = Object.values(element);
+            let index = value.indexOf(tem);
+            if (index !== -1) {
+              value.splice(index, 1);
+              data = [...value];
+            }
+            index !== -1 ? value.splice(index, 1) : null;
+          });
+          return mySeries.push({ name: label, data, type });
+        });
+        mapOption = {
+          title: {
+            text: myTitle,
+            left: "center",
+          },
+          tooltip: {
+            trigger: "axis",
+            textStyle: {
+              align: "left",
             },
           },
-        ],
-      },
-    };
+          legend: { top: "6%", data: Object.values(myLegend) },
+          xAxis: myXAxis,
+          yAxis: myYAxis,
+          series: mySeries,
+        };
+      }
+      console.log(rawOption);
+      return mapOption;
+    },
+  },
+  data() {
+    return {};
   },
 };
 </script>
 <style lang="less" scoped>
 .chart {
-  height: 400px;
+  height: 100%;
+  width: 100%;
 }
 </style>

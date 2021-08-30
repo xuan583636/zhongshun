@@ -30,10 +30,46 @@ export const dataOption = {
       id: 2015,
       name: "Walnut Brownie",
       label: "Walnut Brownie",
-      type: "line",
+      type: "bar",
+      hidden: false,
+    },
+    {
+      id: 2016,
+      name: "Walnut Brownie",
+      label: "Walnut Brownie",
+      type: "bar",
+      hidden: false,
+    },
+    {
+      id: 2017,
+      name: "Walnut Brownie",
+      label: "Walnut Brownie",
+      type: "bar",
+      hidden: false,
+    },
+    {
+      id: 2017,
+      name: "Cheese Cocoa",
+      label: "Cheese Cocoa",
+      type: "bar",
+      hidden: false,
+    },
+    {
+      id: 2017,
+      name: "Matcha Latte",
+      label: "Matcha Latte",
+      type: "bar",
+      hidden: false,
+    },
+    {
+      id: 2017,
+      name: "Milk Tea",
+      label: "Milk Tea",
+      type: "bar",
       hidden: false,
     },
   ],
+
   dataset: {
     dimensions: ["product", "2015", "2016", "2017"],
     source: [
