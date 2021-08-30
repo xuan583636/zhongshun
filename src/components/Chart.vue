@@ -59,7 +59,15 @@ export default {
               align: "left",
             },
           },
-          legend: { top: "6%", data: Object.values(myLegend) },
+          legend: {
+            top: "30px",
+            left: "center",
+            data: Object.values(myLegend),
+          },
+          grid: {
+            top: "80px",
+            containLabel: true,
+          },
           xAxis: myXAxis,
           yAxis: myYAxis,
           series: mySeries,

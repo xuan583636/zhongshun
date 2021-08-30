@@ -129,7 +129,7 @@ export default {
   align-content: flex-start;
   .singleChart {
     flex: 0 0 30%;
-    height: 450px;
+    height: 500px;
   }
 }
 </style>
