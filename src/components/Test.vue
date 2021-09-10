@@ -45,6 +45,7 @@ export default {
   },
   mounted() {
     this.drawChart();
+    console.log("this.myChart", 142);
   },
 };
 </script>

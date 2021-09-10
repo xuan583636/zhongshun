@@ -1,105 +1,85 @@
 <template>
-  <div>
-    <div class="my-chart" ref="chart" />
+  <div class="my-chart">
+    <ChartEditor class="chart-editor" />
+    <div id="show" class="chart-show" ref="chart" />
   </div>
 </template>
 
 <script>
-// import { color } from "echarts";
-// import * as echarts from 'echarts'
-/**
- * 组件描述: 此组件用于通用图表展示 基于echarts 5.x版本
- * 功能：图标编辑器生成的配置信息，结合后台返回数据，绘制图谱
- * 设计需求
- * 1.页面加载的时候绘制图谱
- * 2.更改layoutConfig 图表配置时重绘图谱
- */
+import * as echarts from "echarts";
+import ChartEditor from "./chartEditor.vue";
+
 export default {
-  name: "freeChart",
-  props: {
-    layoutConfig: {
-      type: Object,
-      default: () => {},
-    },
+  name: "Chart",
+  components: {
+    ChartEditor,
   },
   data() {
     return {
-      // echarts实例
-      chart: null,
-      // 布局配置数据
-      layoutBuffer: {
-        // 类别
-        category: [],
-        // 系列
-        serires: [],
-      },
-      // 后端解析数据
-      dataBuffer: {
-        // 类别
-        category: [
-          {
-            id: "a",
-          },
-          {
-            id: "c",
-          },
+      myChart: null,
 
-          {
-            id: "b",
-          },
-        ],
-        // 系列
-        serires: [
-          {
-            id: "2015",
-          },
-          2016,
-          2017,
-        ],
-        // 数据
-        dataList: {
-          a: { 2015: 43.3, 2016: 85.8, 2017: 93.7 },
-          b: { 2015: 43.3, 2016: 85.8, 2017: 93.7 },
-          c: { 2015: 43.3, 2016: 85.8, 2017: 93.7 },
+      option: {
+        title: {
+          text: "ECharts Introductory example",
         },
+        tooltip: {},
+        legend: {
+          top: "6%",
+          data: ["Sales volume"],
+        },
+        xAxis: {
+          data: [
+            "shirt",
+            "Cardigan",
+            "Chiffon shirt",
+            "trousers",
+            "High-heeled shoes",
+            "Socks",
+          ],
+        },
+        yAxis: {},
+        series: [
+          {
+            name: "Sales volume",
+            type: "bar",
+            data: [5, 20, 36, 10, 10, 20],
+          },
+        ],
       },
     };
   },
-  watch: {
-    layoutConfig() {
-      this.loadConfig();
-      this.layout();
-      // this.setConfig(val)
+  methods: {
+    drawChart() {
+      this.myChart = echarts.init(document.getElementById("show"));
+      this.myChart.setOption(this.option);
+
+      // setTimeout(() => {
+      //   that.myChart.resize({
+      //     width: "600px",
+      //     height: "400px",
+      //   });
+      // }, 5000);
     },
   },
   mounted() {
-    // 初始化echarts实例
-    this.init();
-  },
-  methods: {
-    init() {
-      this.loadData();
-      this.loadConfig();
-      this.layout();
-    },
-    loadConfig() {
-      // 获取配置
-      // 解析配置
-    },
-    loadData() {
-      // 获取数据
-      // 解析数据 并存放在dataBuffer
-    },
-    // 布局生成渲染数据
-    layout() {
-      // 根据layoutBuffer和dataBuffer 构建绘图配置
-      // const options
-      // 根据options信息和dataList 构建 绘图数据
-      // const data
-      // 绘制图谱
-    },
+    this.drawChart();
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.my-chart {
+  overflow: hidden;
+  height: 500px;
+
+  .chart-editor {
+    float: left;
+    width: 700px;
+    height: 100%;
+  }
+  .chart-show {
+    overflow: hidden;
+    height: 100%;
+  }
+}
+</style>
