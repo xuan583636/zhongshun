@@ -1,7 +1,9 @@
 <template>
   <div class="my-chart">
     <ChartEditor class="chart-editor" />
-    <div id="show" class="chart-show" ref="chart" />
+    <div class="chart-parent">
+      <div id="show" class="chart-show" ref="chart" />
+    </div>
   </div>
 </template>
 
@@ -50,9 +52,12 @@ export default {
   },
   methods: {
     drawChart() {
+      let that = this;
       this.myChart = echarts.init(document.getElementById("show"));
       this.myChart.setOption(this.option);
-
+      window.addEventListener("resize", () => {
+        that.myChart.resize();
+      });
       // setTimeout(() => {
       //   that.myChart.resize({
       //     width: "600px",
@@ -70,16 +75,19 @@ export default {
 <style lang="scss" scoped>
 .my-chart {
   overflow: hidden;
-  height: 500px;
+  height: 100%;
 
   .chart-editor {
     float: left;
-    width: 700px;
+    width: 300px;
     height: 100%;
   }
-  .chart-show {
+  .chart-parent {
     overflow: hidden;
-    height: 100%;
+
+    .chart-show {
+      height: 400px;
+    }
   }
 }
 </style>
