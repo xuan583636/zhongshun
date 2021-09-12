@@ -3,10 +3,10 @@
     <el-collapse v-model="basicCollapse" class="out-collapse">
       <el-collapse-item name="1">
         <div class="collapse-title" slot="title">
-          <span class="head-title">{{ configData.title.label }}</span>
+          <span class="head-title">{{ layoutTempOption.title.label }}</span>
           <div @click="stopProp">
             <el-switch
-              v-model="configData.title.show"
+              v-model="layoutTempOption.title.show"
               class="head-switch"
               active-color="#13ce66"
               inactive-color="#C0C4CC"
@@ -22,8 +22,8 @@
               class="collapse-content-value"
               placeholder="请输入标题"
               size="mini"
-              v-model="configData.title.value"
-              :disabled="!configData.title.show"
+              v-model="layoutTempOption.title.value"
+              :disabled="!layoutTempOption.title.show"
             >
             </el-input>
           </div>
@@ -31,8 +31,8 @@
             <span class="collapse-content-key">大小</span>
             <el-input-number
               class="collapse-content-value"
-              v-model="configData.title.fontSize"
-              :disabled="!configData.title.show"
+              v-model="layoutTempOption.title.fontSize"
+              :disabled="!layoutTempOption.title.show"
               size="mini"
               :min="15"
               :max="30"
@@ -43,8 +43,8 @@
             <span class="collapse-content-key">字体颜色</span>
             <div class="collapse-content-value">
               <el-color-picker
-                v-model="configData.title.color"
-                :disabled="!configData.title.show"
+                v-model="layoutTempOption.title.color"
+                :disabled="!layoutTempOption.title.show"
                 show-alpha
               ></el-color-picker>
             </div>
@@ -53,10 +53,10 @@
       </el-collapse-item>
       <el-collapse-item name="2">
         <div class="collapse-title" slot="title">
-          <span class="head-title">{{ configData.viceTitle.label }}</span>
+          <span class="head-title">{{ layoutTempOption.viceTitle.label }}</span>
           <div @click="stopProp">
             <el-switch
-              v-model="configData.viceTitle.show"
+              v-model="layoutTempOption.viceTitle.show"
               class="head-switch"
               active-color="#13ce66"
               inactive-color="#C0C4CC"
@@ -72,8 +72,8 @@
               class="collapse-content-value"
               placeholder="请输入标题"
               size="mini"
-              v-model="configData.viceTitle.value"
-              :disabled="!configData.viceTitle.show"
+              v-model="layoutTempOption.viceTitle.value"
+              :disabled="!layoutTempOption.viceTitle.show"
             >
             </el-input>
           </div>
@@ -81,8 +81,8 @@
             <span class="collapse-content-key">大小</span>
             <el-input-number
               class="collapse-content-value"
-              v-model="configData.viceTitle.fontSize"
-              :disabled="!configData.viceTitle.show"
+              v-model="layoutTempOption.viceTitle.fontSize"
+              :disabled="!layoutTempOption.viceTitle.show"
               size="mini"
               :min="15"
               :max="30"
@@ -93,8 +93,8 @@
             <span class="collapse-content-key">字体颜色</span>
             <div class="collapse-content-value">
               <el-color-picker
-                v-model="configData.viceTitle.color"
-                :disabled="!configData.viceTitle.show"
+                v-model="layoutTempOption.viceTitle.color"
+                :disabled="!layoutTempOption.viceTitle.show"
                 show-alpha
               ></el-color-picker>
             </div>
@@ -103,10 +103,10 @@
       </el-collapse-item>
       <el-collapse-item name="3">
         <div class="collapse-title" slot="title">
-          <span class="head-title">{{ configData.legend.label }}</span>
+          <span class="head-title">{{ layoutTempOption.legend.label }}</span>
           <div @click="stopProp">
             <el-switch
-              v-model="configData.legend.show"
+              v-model="layoutTempOption.legend.show"
               class="head-switch"
               active-color="#13ce66"
               inactive-color="#C0C4CC"
@@ -119,10 +119,10 @@
           <div class="collapse-content-row">
             <span class="collapse-content-key">类型</span>
             <el-select
-              v-model="configData.legend.type"
+              v-model="layoutTempOption.legend.type"
               class="collapse-content-value"
               size="mini"
-              :disabled="!configData.legend.show"
+              :disabled="!layoutTempOption.legend.show"
             >
               <el-option value="plain" label="普通"></el-option>
               <el-option value="scroll" label="翻页"></el-option>
@@ -131,8 +131,8 @@
           <div class="collapse-content-row">
             <span class="collapse-content-key">布局方式</span>
             <el-select
-              v-model="configData.legend.orient"
-              :disabled="!configData.legend.show"
+              v-model="layoutTempOption.legend.orient"
+              :disabled="!layoutTempOption.legend.show"
               placeholder="请选择"
               class="collapse-content-value"
               size="mini"
@@ -144,8 +144,8 @@
           <div class="collapse-content-row">
             <span class="collapse-content-key">布局位置</span>
             <el-select
-              v-model="configData.legend.position"
-              :disabled="!configData.legend.show"
+              v-model="layoutTempOption.legend.position"
+              :disabled="!layoutTempOption.legend.show"
               placeholder="请选择"
               class="collapse-content-value"
               size="mini"
@@ -163,9 +163,9 @@
             <span class="collapse-content-key">X轴偏移</span>
             <el-input-number
               class="collapse-content-value"
-              v-model="configData.legend.X"
+              v-model="layoutTempOption.legend.X"
               controls-position="right"
-              :disabled="!configData.legend.show"
+              :disabled="!layoutTempOption.legend.show"
               size="mini"
               :min="15"
               :max="30"
@@ -176,9 +176,9 @@
             <span class="collapse-content-key">Y轴偏移</span>
             <el-input-number
               class="collapse-content-value"
-              v-model="configData.legend.Y"
+              v-model="layoutTempOption.legend.Y"
               controls-position="right"
-              :disabled="!configData.legend.show"
+              :disabled="!layoutTempOption.legend.show"
               size="mini"
               :min="15"
               :max="30"
@@ -195,10 +195,12 @@
           <el-collapse v-model="dataCollapse" class="inner-collapse">
             <el-collapse-item name="1">
               <div class="collapse-title" slot="title">
-                <span class="head-title">{{ configData.title.label }}</span>
+                <span class="head-title">{{
+                  layoutTempOption.title.label
+                }}</span>
                 <div @click="stopProp">
                   <el-switch
-                    v-model="configData.title.show"
+                    v-model="layoutTempOption.title.show"
                     class="head-switch"
                     active-color="#13ce66"
                     inactive-color="#C0C4CC"
@@ -214,8 +216,8 @@
                     class="collapse-content-value"
                     placeholder="请输入标题"
                     size="mini"
-                    v-model="configData.title.value"
-                    :disabled="!configData.title.show"
+                    v-model="layoutTempOption.title.value"
+                    :disabled="!layoutTempOption.title.show"
                   >
                   </el-input>
                 </div>
@@ -223,8 +225,8 @@
                   <span class="collapse-content-key">大小</span>
                   <el-input-number
                     class="collapse-content-value"
-                    v-model="configData.title.fontSize"
-                    :disabled="!configData.title.show"
+                    v-model="layoutTempOption.title.fontSize"
+                    :disabled="!layoutTempOption.title.show"
                     size="mini"
                     :min="15"
                     :max="30"
@@ -235,8 +237,8 @@
                   <span class="collapse-content-key">字体颜色</span>
                   <div class="collapse-content-value">
                     <el-color-picker
-                      v-model="configData.title.color"
-                      :disabled="!configData.title.show"
+                      v-model="layoutTempOption.title.color"
+                      :disabled="!layoutTempOption.title.show"
                       show-alpha
                     ></el-color-picker>
                   </div>
@@ -245,10 +247,12 @@
             </el-collapse-item>
             <el-collapse-item name="2">
               <div class="collapse-title" slot="title">
-                <span class="head-title">{{ configData.title.label }}</span>
+                <span class="head-title">{{
+                  layoutTempOption.title.label
+                }}</span>
                 <div @click="stopProp">
                   <el-switch
-                    v-model="configData.title.show"
+                    v-model="layoutTempOption.title.show"
                     class="head-switch"
                     active-color="#13ce66"
                     inactive-color="#C0C4CC"
@@ -264,8 +268,8 @@
                     class="collapse-content-value"
                     placeholder="请输入标题"
                     size="mini"
-                    v-model="configData.title.value"
-                    :disabled="!configData.title.show"
+                    v-model="layoutTempOption.title.value"
+                    :disabled="!layoutTempOption.title.show"
                   >
                   </el-input>
                 </div>
@@ -273,8 +277,8 @@
                   <span class="collapse-content-key">大小</span>
                   <el-input-number
                     class="collapse-content-value"
-                    v-model="configData.title.fontSize"
-                    :disabled="!configData.title.show"
+                    v-model="layoutTempOption.title.fontSize"
+                    :disabled="!layoutTempOption.title.show"
                     size="mini"
                     :min="15"
                     :max="30"
@@ -285,8 +289,8 @@
                   <span class="collapse-content-key">字体颜色</span>
                   <div class="collapse-content-value">
                     <el-color-picker
-                      v-model="configData.title.color"
-                      :disabled="!configData.title.show"
+                      v-model="layoutTempOption.title.color"
+                      :disabled="!layoutTempOption.title.show"
                       show-alpha
                     ></el-color-picker>
                   </div>
@@ -298,10 +302,242 @@
       </el-collapse-item>
       <el-collapse-item name="5">
         <div class="collapse-title" slot="title">
-          <span class="head-title">{{ configData.others.label }}</span>
+          <span class="head-title">{{ layoutTempOption.xAxis.label }}</span>
           <div @click="stopProp">
             <el-switch
-              v-model="configData.others.show"
+              v-model="layoutTempOption.xAxis.show"
+              class="head-switch"
+              active-color="#13ce66"
+              inactive-color="#C0C4CC"
+            >
+              >
+            </el-switch>
+          </div>
+        </div>
+        <div class="collapse-content">
+          <div class="collapse-content-row">
+            <span class="collapse-content-key">坐标轴位置</span>
+            <el-select
+              v-model="layoutTempOption.xAxis.position"
+              class="collapse-content-value"
+              size="mini"
+              :disabled="!layoutTempOption.xAxis.show"
+            >
+              <el-option value="top" label="上方"></el-option>
+              <el-option value="bottom" label="下方"></el-option>
+            </el-select>
+          </div>
+          <div class="collapse-content-row">
+            <span class="collapse-content-key">坐标轴名称</span>
+            <el-input
+              class="collapse-content-value"
+              placeholder="请输入坐标轴名称"
+              size="mini"
+              v-model="layoutTempOption.xAxis.showName"
+              :disabled="!layoutTempOption.xAxis.show"
+            >
+            </el-input>
+          </div>
+          <div class="collapse-content-row">
+            <span class="collapse-content-key">轴名称显示位置</span>
+            <el-select
+              v-model="layoutTempOption.xAxis.nameLocation"
+              class="collapse-content-value"
+              size="mini"
+              :disabled="!layoutTempOption.xAxis.show"
+            >
+              <el-option value="start" label="轴前方"></el-option>
+              <el-option value="center" label="轴中间"></el-option>
+              <el-option value="end" label="轴后方"></el-option>
+            </el-select>
+          </div>
+          <div class="collapse-content-row">
+            <span class="collapse-content-key">名称与轴线距离</span>
+            <el-input-number
+              class="collapse-content-value"
+              v-model="layoutTempOption.xAxis.nameGap"
+              :disabled="!layoutTempOption.xAxis.show"
+              size="mini"
+              label="距离"
+            ></el-input-number>
+          </div>
+          <div class="collapse-content-row">
+            <span class="collapse-content-key">名称旋转角度</span>
+            <el-input-number
+              class="collapse-content-value"
+              v-model="layoutTempOption.xAxis.nameRotate"
+              :disabled="!layoutTempOption.xAxis.show"
+              :min="-90"
+              :max="90"
+              size="mini"
+              label="角度"
+            ></el-input-number>
+          </div>
+          <div class="collapse-content-row">
+            <span class="collapse-content-key">是否显示轴刻度</span>
+            <el-switch
+              v-model="layoutTempOption.xAxis.axisLabel.show"
+              :disabled="!layoutTempOption.xAxis.show"
+              class="collapse-content-value"
+              style="justify-content: center"
+              active-color="#13ce66"
+              inactive-color="#C0C4CC"
+            >
+              >
+            </el-switch>
+          </div>
+          <div class="collapse-content-row">
+            <span class="collapse-content-key">刻度旋转角度</span>
+            <el-input-number
+              class="collapse-content-value"
+              v-model="layoutTempOption.xAxis.axisLabel.rotate"
+              :disabled="
+                !layoutTempOption.xAxis.show ||
+                !layoutTempOption.xAxis.axisLabel.show
+              "
+              :min="-90"
+              :max="90"
+              size="mini"
+              label="角度"
+            ></el-input-number>
+          </div>
+          <div class="collapse-content-row">
+            <span class="collapse-content-key">刻度与轴间距</span>
+            <el-input-number
+              class="collapse-content-value"
+              v-model="layoutTempOption.xAxis.axisLabel.margin"
+              :disabled="
+                !layoutTempOption.xAxis.show ||
+                !layoutTempOption.xAxis.axisLabel.show
+              "
+              size="mini"
+              label="间距"
+            ></el-input-number>
+          </div>
+        </div>
+      </el-collapse-item>
+      <el-collapse-item name="6">
+        <div class="collapse-title" slot="title">
+          <span class="head-title">{{ layoutTempOption.yAxis.label }}</span>
+          <div @click="stopProp">
+            <el-switch
+              v-model="layoutTempOption.yAxis.show"
+              class="head-switch"
+              active-color="#13ce66"
+              inactive-color="#C0C4CC"
+            >
+              >
+            </el-switch>
+          </div>
+        </div>
+        <div class="collapse-content">
+          <div class="collapse-content-row">
+            <span class="collapse-content-key">坐标轴位置</span>
+            <el-select
+              v-model="layoutTempOption.yAxis.position"
+              class="collapse-content-value"
+              size="mini"
+              :disabled="!layoutTempOption.yAxis.show"
+            >
+              <el-option value="left" label="左边"></el-option>
+              <el-option value="right" label="右边"></el-option>
+            </el-select>
+          </div>
+          <div class="collapse-content-row">
+            <span class="collapse-content-key">坐标轴名称</span>
+            <el-input
+              class="collapse-content-value"
+              placeholder="请输入坐标轴名称"
+              size="mini"
+              v-model="layoutTempOption.yAxis.showName"
+              :disabled="!layoutTempOption.yAxis.show"
+            >
+            </el-input>
+          </div>
+          <div class="collapse-content-row">
+            <span class="collapse-content-key">轴名称显示位置</span>
+            <el-select
+              v-model="layoutTempOption.yAxis.nameLocation"
+              class="collapse-content-value"
+              size="mini"
+              :disabled="!layoutTempOption.yAxis.show"
+            >
+              <el-option value="start" label="轴前方"></el-option>
+              <el-option value="center" label="轴中间"></el-option>
+              <el-option value="end" label="轴后方"></el-option>
+            </el-select>
+          </div>
+          <div class="collapse-content-row">
+            <span class="collapse-content-key">名称与轴线距离</span>
+            <el-input-number
+              class="collapse-content-value"
+              v-model="layoutTempOption.yAxis.nameGap"
+              :disabled="!layoutTempOption.yAxis.show"
+              size="mini"
+              label="距离"
+            ></el-input-number>
+          </div>
+          <div class="collapse-content-row">
+            <span class="collapse-content-key">名称旋转角度</span>
+            <el-input-number
+              class="collapse-content-value"
+              v-model="layoutTempOption.yAxis.nameRotate"
+              :disabled="!layoutTempOption.yAxis.show"
+              :min="-90"
+              :max="90"
+              size="mini"
+              label="角度"
+            ></el-input-number>
+          </div>
+          <div class="collapse-content-row">
+            <span class="collapse-content-key">是否显示轴刻度</span>
+            <el-switch
+              v-model="layoutTempOption.yAxis.axisLabel.show"
+              :disabled="!layoutTempOption.yAxis.show"
+              class="collapse-content-value"
+              style="justify-content: center"
+              active-color="#13ce66"
+              inactive-color="#C0C4CC"
+            >
+              >
+            </el-switch>
+          </div>
+          <div class="collapse-content-row">
+            <span class="collapse-content-key">刻度旋转角度</span>
+            <el-input-number
+              class="collapse-content-value"
+              v-model="layoutTempOption.yAxis.axisLabel.rotate"
+              :disabled="
+                !layoutTempOption.yAxis.show ||
+                !layoutTempOption.yAxis.axisLabel.show
+              "
+              :min="-90"
+              :max="90"
+              size="mini"
+              label="角度"
+            ></el-input-number>
+          </div>
+          <div class="collapse-content-row">
+            <span class="collapse-content-key">刻度与轴间距</span>
+            <el-input-number
+              class="collapse-content-value"
+              v-model="layoutTempOption.yAxis.axisLabel.margin"
+              :disabled="
+                !layoutTempOption.yAxis.show ||
+                !layoutTempOption.yAxis.axisLabel.show
+              "
+              size="mini"
+              label="间距"
+            ></el-input-number>
+          </div>
+        </div>
+      </el-collapse-item>
+      <el-collapse-item name="7">
+        <div class="collapse-title" slot="title">
+          <span class="head-title">{{ layoutTempOption.others.label }}</span>
+          <div @click="stopProp">
+            <el-switch
+              v-model="layoutTempOption.others.show"
               class="head-switch"
               active-color="#13ce66"
               inactive-color="#C0C4CC"
@@ -315,8 +551,8 @@
             <span class="collapse-content-key">背景颜色</span>
             <div class="collapse-content-value">
               <el-color-picker
-                v-model="configData.others.backgroundColor"
-                :disabled="!configData.others.show"
+                v-model="layoutTempOption.others.backgroundColor"
+                :disabled="!layoutTempOption.others.show"
                 show-alpha
               ></el-color-picker>
             </div>
@@ -324,8 +560,8 @@
           <div class="collapse-content-row">
             <span class="collapse-content-key">工具栏</span>
             <el-switch
-              v-model="configData.others.toolbox.show"
-              :disabled="!configData.others.show"
+              v-model="layoutTempOption.others.toolbox.show"
+              :disabled="!layoutTempOption.others.show"
               class="collapse-content-value"
               style="justify-content: center"
               active-color="#13ce66"
@@ -413,7 +649,7 @@ export default {
           label: "右方",
         },
       ],
-      configData: {
+      layoutTempOption: {
         title: {
           name: "title",
           label: "标题",
@@ -451,42 +687,89 @@ export default {
             },
           },
         },
+        xAxis: {
+          name: "xAxis",
+          label: "横坐标",
+          show: true,
+          position: "bottom",
+          showName: "",
+          nameLocation: "end",
+          nameGap: 15,
+          nameRotate: 0,
+          axisLabel: {
+            show: true,
+            rotate: 0,
+            margin: 10,
+          },
+        },
+        yAxis: {
+          name: "yAxis",
+          label: "纵坐标",
+          show: true,
+          position: "left",
+          showName: "",
+          nameLocation: "end",
+          nameGap: 15,
+          nameRotate: 0,
+          axisLabel: {
+            show: true,
+            rotate: 0,
+            margin: 10,
+          },
+        },
       },
       dataBuffer: [],
-      dataConfig: [],
+      dataOption: [],
     };
   },
   computed: {
     layoutOption: function () {
       return {
         title: {
-          show: this.layoutOption.title.show,
-          text: this.layoutOption.title.value,
+          show: this.layoutTempOption.title.show,
+          text: this.layoutTempOption.title.value,
           textStyle: {
-            color: this.layoutOption.title.color,
-            fontSize: this.layoutOption.title.fontSize,
+            color: this.layoutTempOption.title.color,
+            fontSize: this.layoutTempOption.title.fontSize,
           },
-          subtext: this.layoutOption.viceTitle.show
-            ? this.layoutOption.viceTitle.value
+          subtext: this.layoutTempOption.viceTitle.show
+            ? this.layoutTempOption.viceTitle.value
             : "",
-          subtextStyle: this.layoutOption.viceTitle.show
+          subtextStyle: this.layoutTempOption.viceTitle.show
             ? {
-                color: this.layoutOption.viceTitle.color,
-                fontSize: this.layoutOption.viceTitle.fontSize,
+                color: this.layoutTempOption.viceTitle.color,
+                fontSize: this.layoutTempOption.viceTitle.fontSize,
               }
             : {},
         },
         legend: {
-          show: this.layoutOption.legend.show,
-          type: this.layoutOption.legend.type,
-          orient: this.layoutOption.legend.orient,
+          show: this.layoutTempOption.legend.show,
+          type: this.layoutTempOption.legend.type,
+          orient: this.layoutTempOption.legend.orient,
         },
-        backgroundColor: this.layoutOption.others.show
-          ? this.layoutOption.others.backgroundColor
+        backgroundColor: this.layoutTempOption.others.show
+          ? this.layoutTempOption.others.backgroundColor
           : "transparent",
         toolbox: {
-          show: this.layoutOption.others.show,
-          feature: this.layoutOption.others.feature,
+          show: this.layoutTempOption.others.show,
+          feature: this.layoutTempOption.others.feature,
+        },
+        yAxis: {
+          show: this.layoutTempOption.yAxis.show,
+          type: this.layoutTempOption.yAxis.type,
+        },
+        xAxis: {
+          show: this.layoutTempOption.xAxis.show,
+          position: this.layoutTempOption.xAxis.position,
+          name: this.layoutTempOption.xAxis.showName,
+          nameLocation: this.layoutTempOption.xAxis.nameLocation,
+          nameGap: this.layoutTempOption.xAxis.nameGap,
+          nameRotate: this.layoutTempOption.xAxis.nameRotate,
+          axisLabel: {
+            show: this.layoutTempOption.xAxis.axisLabel.show,
+            rotate: this.layoutTempOption.xAxis.axisLabel.rotate,
+            margin: this.layoutTempOption.xAxis.axisLabel.margin,
+          },
         },
       };
     },
@@ -496,8 +779,24 @@ export default {
       handler: function (val, oldVal) {
         if (val !== oldVal) {
           let { category, serires, dataList } = { ...val };
+          let dataConfig = category.map((item, index) => {
+            return {
+              name: item["id"],
+              show: true,
+              type: "line",
+              symbol: "circle",
+              symbolSize: 6,
+              lineStyle: { width: 2, type: "dashed" },
+              radius: [30, 0],
+            };
+          });
 
-          console.log(dataList, 11);
+          Object.keys(dataList).forEach((item, index, array) => {
+            if (dataConfig[index]["name"] == item) {
+              dataConfig[index]["data"] = Object.entries(dataList[item]);
+            }
+          });
+          this.dataOption = dataConfig;
         }
       },
       deep: true,
@@ -546,6 +845,9 @@ export default {
         },
       };
       this.dataBuffer = dataBuffer;
+      this.layoutTempOption.xAxis.data = dataBuffer.serires.map(
+        (item, index) => item["id"]
+      );
     },
   },
   mounted() {

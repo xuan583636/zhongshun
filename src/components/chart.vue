@@ -80,7 +80,8 @@ export default {
   .chart-editor {
     float: left;
     width: 300px;
-    height: 100%;
+    height: 500px;
+    overflow: auto;
   }
   .chart-parent {
     overflow: hidden;
