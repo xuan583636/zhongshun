@@ -10,6 +10,7 @@
               class="head-switch"
               active-color="#13ce66"
               inactive-color="#C0C4CC"
+              @change="changeViceTitleStatus"
             >
               >
             </el-switch>
@@ -57,6 +58,7 @@
           <div @click="stopProp">
             <el-switch
               v-model="layoutTempOption.viceTitle.show"
+              :disabled="!layoutTempOption.title.show"
               class="head-switch"
               active-color="#13ce66"
               inactive-color="#C0C4CC"
@@ -73,7 +75,9 @@
               placeholder="请输入标题"
               size="mini"
               v-model="layoutTempOption.viceTitle.value"
-              :disabled="!layoutTempOption.viceTitle.show"
+              :disabled="
+                !layoutTempOption.viceTitle.show || !layoutTempOption.title.show
+              "
             >
             </el-input>
           </div>
@@ -82,7 +86,9 @@
             <el-input-number
               class="collapse-content-value"
               v-model="layoutTempOption.viceTitle.fontSize"
-              :disabled="!layoutTempOption.viceTitle.show"
+              :disabled="
+                !layoutTempOption.viceTitle.show || !layoutTempOption.title.show
+              "
               size="mini"
               :min="15"
               :max="30"
@@ -94,7 +100,10 @@
             <div class="collapse-content-value">
               <el-color-picker
                 v-model="layoutTempOption.viceTitle.color"
-                :disabled="!layoutTempOption.viceTitle.show"
+                :disabled="
+                  !layoutTempOption.viceTitle.show ||
+                  !layoutTempOption.title.show
+                "
                 show-alpha
               ></el-color-picker>
             </div>
@@ -522,6 +531,7 @@
               class="head-switch"
               active-color="#13ce66"
               inactive-color="#C0C4CC"
+              @change="changeToolboxStatus"
             >
               >
             </el-switch>
@@ -579,7 +589,7 @@ export default {
         viceTitle: {
           name: "viceTitle",
           label: "副标题",
-          show: true,
+          show: false,
           value: "",
           color: "rgba(0, 0, 0, 1)",
           fontSize: 10,
@@ -646,9 +656,11 @@ export default {
               : "rgba(0, 0, 0, 1)",
             fontSize: this.layoutTempOption.title.fontSize,
           },
-          subtext: this.layoutTempOption.viceTitle.show
-            ? this.layoutTempOption.viceTitle.value
-            : "",
+          subtext:
+            this.layoutTempOption.viceTitle.show &
+            this.layoutTempOption.title.show
+              ? this.layoutTempOption.viceTitle.value
+              : "",
           subtextStyle: this.layoutTempOption.viceTitle.show
             ? {
                 color: this.layoutTempOption.viceTitle.color
@@ -665,8 +677,12 @@ export default {
             : "transparent"
           : "transparent",
         toolbox: {
-          show: this.layoutTempOption.others.show,
-          feature: this.layoutTempOption.others.feature,
+          show: this.layoutTempOption.others.toolbox.show,
+          feature: {
+            saveAsImage:
+              this.layoutTempOption.others.toolbox.feature.saveAsImage,
+            dataView: this.layoutTempOption.others.toolbox.feature.dataView,
+          },
         },
         xAxis: {
           show: this.layoutTempOption.xAxis.show,
@@ -803,8 +819,15 @@ export default {
     },
   },
   methods: {
-    changeSwitch(index) {
-      this.tableData[index].complex = false;
+    changeViceTitleStatus(ele) {
+      if (!ele) {
+        this.layoutTempOption.viceTitle.show = false;
+      }
+    },
+    changeToolboxStatus(ele) {
+      if (!ele) {
+        this.layoutTempOption.others.toolbox.show = false;
+      }
     },
     stopProp(e) {
       e.stopPropagation();
