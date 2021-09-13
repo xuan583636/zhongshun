@@ -588,7 +588,7 @@ export default {
           name: "others",
           label: "其他配置",
           show: true,
-          backgroundColor: "transparent",
+          backgroundColor: "rgba(0, 0, 0, 0)",
           toolbox: {
             show: true,
             feature: {

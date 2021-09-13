@@ -1,5 +1,7 @@
 <template>
-  <div id="show" class="chart-show" ref="chart" />
+  <div id="chart-parent">
+    <div id="show" class="chart-show" ref="chart" />
+  </div>
 </template>
 
 <script>
@@ -23,19 +25,27 @@ export default {
     },
   },
   methods: {
+    chartSize(container, charts) {
+      function getStyle(el) {
+        if (window.getComputedStyle) {
+          return window.getComputedStyle(el, null);
+        } else {
+          return el.currentStyle;
+        }
+      }
+      const hi = getStyle(container, "height").height;
+      console.log(hi);
+      charts.style.height = hi;
+    },
     drawChart() {
       let that = this;
-      this.myChart = echarts.init(document.getElementById("show"));
+      let myChartId = document.getElementById("show");
+
+      this.myChart = echarts.init(myChartId);
 
       window.addEventListener("resize", () => {
         that.myChart.resize();
       });
-      // setTimeout(() => {
-      //   that.myChart.resize({
-      //     width: "600px",
-      //     height: "400px",
-      //   });
-      // }, 5000);
     },
   },
   mounted() {
@@ -47,4 +57,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+#chart-parent {
+  overflow: hidden;
+}
+</style>
