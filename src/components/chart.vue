@@ -1,60 +1,32 @@
 <template>
-  <div class="my-chart">
-    <ChartEditor class="chart-editor" />
-    <div class="chart-parent">
-      <div id="show" class="chart-show" ref="chart" />
-    </div>
-  </div>
+  <div id="show" class="chart-show" ref="chart" />
 </template>
 
 <script>
 import * as echarts from "echarts";
-import ChartEditor from "./chartEditor.vue";
+import bus from "./../bus";
 
 export default {
   name: "Chart",
-  components: {
-    ChartEditor,
-  },
   data() {
     return {
       myChart: null,
-
-      option: {
-        title: {
-          text: "ECharts Introductory example",
-        },
-        tooltip: {},
-        legend: {
-          top: "6%",
-          data: ["Sales volume"],
-        },
-        xAxis: {
-          data: [
-            "shirt",
-            "Cardigan",
-            "Chiffon shirt",
-            "trousers",
-            "High-heeled shoes",
-            "Socks",
-          ],
-        },
-        yAxis: {},
-        series: [
-          {
-            name: "Sales volume",
-            type: "bar",
-            data: [5, 20, 36, 10, 10, 20],
-          },
-        ],
-      },
+      option: {},
     };
+  },
+  watch: {
+    option: {
+      handler: function (val) {
+        this.myChart.setOption(val, true);
+      },
+      deep: true,
+    },
   },
   methods: {
     drawChart() {
       let that = this;
       this.myChart = echarts.init(document.getElementById("show"));
-      this.myChart.setOption(this.option);
+
       window.addEventListener("resize", () => {
         that.myChart.resize();
       });
@@ -67,28 +39,12 @@ export default {
     },
   },
   mounted() {
+    bus.$on("sendMessage", (data) => {
+      this.option = data;
+    });
     this.drawChart();
   },
 };
 </script>
 
-<style lang="scss" scoped>
-.my-chart {
-  overflow: hidden;
-  height: 100%;
-
-  .chart-editor {
-    float: left;
-    width: 300px;
-    height: 500px;
-    overflow: auto;
-  }
-  .chart-parent {
-    overflow: hidden;
-
-    .chart-show {
-      height: 400px;
-    }
-  }
-}
-</style>
+<style lang="scss" scoped></style>
